@@ -214,6 +214,23 @@ You may adjust key settings:
 
 ---
 
+## Explainability Analysis
+
+The notebook `explainability.ipynb` contains the explainability and model interpretation.
+It demonstrates how model predictions are analyzed and visualized using SHAP (SHapley Additive Explanations) to identify which learning behavior features most influence the predicted dropout or disengagement risk.
+
+Key steps included:
+
+* Loading trained models and datasets from `data/preprocessed/` and `models/`
+* Sampling background data from the training set to serve as a baseline for SHAP
+* Computing SHAP values for test samples (both batched and parallel options available)
+* Visualizing results through summary plots, feature impact rankings, and distribution analyses
+
+This notebook provides interpretable insights into how individual features—such as inactivity duration, quiz attempts, or previous performance—affect model outputs.
+It supports transparent decision-making and educational feedback, ensuring the AIDA models remain explainable and actionable in real-world learning analytics contexts.
+
+---
+
 ## Reproducibility
 
 - Cross-validation is **StratifiedGroupKFold** (grouped by attempt ID).  
