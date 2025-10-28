@@ -89,10 +89,6 @@ def split_data(
     
     # train_data, test_data = train_test_split(df, test_size=0.2)
 
-    # other preprocessing
-    # train_data = train_data.groupby(['courseid','userid','TestID','attemptid'], as_index=False).last()
-    # test_data = test_data.groupby(['courseid','userid','TestID','attemptid'], as_index=False).last()
-    # test_data = test_data.groupby(['courseid','userid','TestID','attemptid']).apply(lambda group: group.iloc[-2:]).reset_index(drop=True)
     return train_data, test_data
 
 def plot_feature_correlation(
@@ -340,9 +336,9 @@ def preprocess(df_merged: pd.DataFrame) -> pd.DataFrame:
         group['days_inactive'] = 0
         days_inactive_since_last_activity = 0
         days_inactive = 0
-        
-        for i, row in group.sort_values(by='date_rel').iterrows():
-            
+        group = group.sort_values(by='date_rel')
+        for i, row in group.iterrows():
+
             group.at[i, 'days_inactive_since_last_activity'] = days_inactive_since_last_activity
             group.at[i, 'days_inactive'] = days_inactive
     
